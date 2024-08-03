@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Hi {{data.name}}</h2>
+<mat-dialog-content>
+    <p>What's your name</p>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-content>
+    <p>What's your Occupation</p>
+    <mat-form-field>
+        <mat-label>Occupation</mat-label>
+        <input matInput [(ngModel)]="occupation" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-content>
+    <p>What's your Team</p>
+    <mat-form-field>
+        <mat-label>Team</mat-label>
+        <input matInput [(ngModel)]="team" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="animal()" cdkFocusInitial>Create</button>
+</mat-dialog-actions>

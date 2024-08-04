@@ -1,47 +1,30 @@
-import {MatDialogModule} from '@angular/material/dialog';
 import { PeriodicElement } from '../../views/home/home.component';
-import {ChangeDetectionStrategy, Component, inject, model, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
+import { Component, inject, model, OnInit} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogActions, MatDialogContent, MatDialogClose,} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-element-dialog',
   standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,],
   templateUrl: './element-dialog.component.html',
-  styleUrl: './element-dialog.component.scss'
+  styleUrl: './element-dialog.component.scss',
+  imports: [MatDialogActions, MatDialogContent, MatFormFieldModule, MatInputModule, MatDialogClose]
 })
-export class ElementDialogComponent {
- element: PeriodicElement;
+
+export class ElementDialogComponent implements OnInit {
+ element!: PeriodicElement;
+ isChange!: boolean;
 
   readonly dialogRef = inject(MatDialogRef<ElementDialogComponent>);
   readonly data = inject<PeriodicElement>(MAT_DIALOG_DATA);
-  readonly name = model(this.data.name);
-  readonly occupation = model(this.data.occupation);
-  readonly team = model(this.data.team);
+
+  ngOnInit(): void {
+     if (this.data.position != null) {
+      this.isChange = true;
+     } else {
+      this.isChange = false
+     }
+  }
 
   onCancel(): void {
     this.dialogRef.close();

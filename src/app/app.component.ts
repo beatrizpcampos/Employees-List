@@ -9,10 +9,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatToolbarModule, MatTableModule, MatButtonModule, MatDialogModule, ElementDialogComponent, MatFormFieldModule, MatInputModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatToolbarModule, MatTableModule, MatButtonModule, MatDialogModule, ElementDialogComponent, MatFormFieldModule, MatInputModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

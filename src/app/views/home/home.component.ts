@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ElementDialogComponent } from '../../shared/element-dialog/element-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   name: string;
@@ -26,7 +28,55 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  @ViewChild(MatTable)
+  table!: MatTable<any>;
   displayedColumns: string[] = ['position', 'name', 'occupation', 'team', 'actions'];
   dataSource = ELEMENT_DATA;
+
+  constructor(public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+  }
+
+  openDialog(element: PeriodicElement | null): void {
+    const dialogRef = this.dialog.open(ElementDialogComponent, {
+      width: '250px',
+      data: element === null ? {
+        position: null,
+        name: '',
+        occupation: '',
+        team: ''
+      } : {
+        position: element.position,
+        name: element.name,
+        occupation: element.occupation,
+        team: element.team
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result !== undefined) {
+        if (result !== undefined) {
+          if (this.dataSource.map(p => p.position).includes(result.position)) {
+            this.dataSource[result.position - 1] = result;
+            this.table.renderRows();
+          }else {
+            this.dataSource.push(result);
+            this.table.renderRows();
+          }
+        }
+        this.dataSource.push(result);
+        this.table.renderRows();
+      }
+    });
+  }
+  
+  editElement(element: PeriodicElement): void {
+    this.openDialog(element);
+  }
+
+  deleteElement(position: number): void {
+    this.dataSource = this.dataSource.filter(p => p.position !== position);
+  }
 }

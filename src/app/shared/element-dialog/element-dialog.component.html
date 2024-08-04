@@ -1,29 +1,38 @@
-<h1 NgIf="!isChange" mat-dialog-title>Create Employee</h1>
-<h1 NgIf="isChange" mat-dialog-title>Edit Employee</h1>
+<div class="container">
+<h1 *ngIf="!isChange" mat-dialog-title>Create Employee</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Edit Employee</h1>
 
 <mat-dialog-content>
-    <p>What's your name</p>
+    <p>What's the position on the list ?</p>
+    <mat-form-field>
+        <mat-label>Position</mat-label>
+        <input matInput [(ngModel)]="data.position" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-content>
+    <p>What's the name ?</p>
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput model="data.name" />
+        <input [(ngModel)]="data.name" />
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-content>
-    <p>What's your Occupation</p>
+    <p>What's the Occupation ?</p>
     <mat-form-field>
         <mat-label>Occupation</mat-label>
-        <input matInput model="data.occupation" />
+        <input matInput [(ngModel)]="data.occupation" />
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-content>
-    <p>What's your Team</p>
+    <p>What's the Team ?</p>
     <mat-form-field>
         <mat-label>Team</mat-label>
-        <input matInput model="data.team" />
+        <input matInput [(ngModel)]="data.team" />
     </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button (click)="onCancel()">Cancel</button>
-    <button NgIf="!isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
-    <button NgIf="isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+    <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+    <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
 </mat-dialog-actions>
+</div>

@@ -13,12 +13,12 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Marcos', occupation: 'Rh', team: 'Santos'},
-  {position: 2, name: 'Bruna', occupation: 'Gestor', team: 'Corinthians'},
-  {position: 3, name: 'Fernando', occupation: 'Desenvolvedor Junior', team: 'Palmeiras'},
-  {position: 4, name: 'Camila', occupation: 'Desenvolvedor Pleno', team: 'Sao Paulo'},
-  {position: 5, name: 'Jorge', occupation: 'Desenvolvedor Senior', team: 'Fluminense'},
-  {position: 6, name: 'Teresa', occupation: 'CEO', team: 'Flamengo'},
+  { position: 1, name: 'Marcos', occupation: 'Rh', team: 'Santos' },
+  { position: 2, name: 'Bruna', occupation: 'Gestor', team: 'Corinthians' },
+  { position: 3, name: 'Fernando', occupation: 'Desenvolvedor Junior', team: 'Palmeiras' },
+  { position: 4, name: 'Camila', occupation: 'Desenvolvedor Pleno', team: 'Sao Paulo' },
+  { position: 5, name: 'Jorge', occupation: 'Desenvolvedor Senior', team: 'Fluminense' },
+  { position: 6, name: 'Teresa', occupation: 'CEO', team: 'Flamengo' },
 ];
 
 @Component({
@@ -34,14 +34,13 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'occupation', 'team', 'actions'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   openDialog(element: PeriodicElement | null): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
-      width: '250px',
       data: element === null ? {
         position: null,
         name: '',
@@ -56,22 +55,19 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
-        if (result !== undefined) {
-          if (this.dataSource.map(p => p.position).includes(result.position)) {
-            this.dataSource[result.position - 1] = result;
-            this.table.renderRows();
-          }else {
-            this.dataSource.push(result);
-            this.table.renderRows();
-          }
+      if (result !== undefined) {
+        console.log(result)
+        if (this.dataSource.map(p => p.position).includes(result.position)) {
+          this.dataSource[result.position - 1] = result;
+          this.table.renderRows();
+        } else {
+          this.dataSource.push(result);
+          this.table.renderRows();
         }
-        this.dataSource.push(result);
-        this.table.renderRows();
       }
     });
   }
-  
+
   editElement(element: PeriodicElement): void {
     this.openDialog(element);
   }

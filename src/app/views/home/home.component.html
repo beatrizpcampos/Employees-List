@@ -1,5 +1,8 @@
 <div class="container">
-    <button class="mat-button" (click)="openDialog(null)">Create Employee</button>
+    <div class="container-2">
+        <mat-paginator [length]="300" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+        <button class="mat-button" (click)="openDialog(null)">Create Employee</button>
+    </div>
     <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Position Column -->

@@ -4,10 +4,12 @@
 
 <mat-dialog-content>
     <p>What's the position on the list ?</p>
-    <mat-form-field>
+    <div class="first-input">
+     <mat-form-field>
         <mat-label>Position</mat-label>
-        <input matInput [(ngModel)]="data.position" />
-    </mat-form-field>
+        <input [(ngModel)]="data.position" />
+     </mat-form-field>
+    </div>
 </mat-dialog-content>
 <mat-dialog-content>
     <p>What's the name ?</p>

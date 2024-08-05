@@ -1,30 +1,44 @@
 .container {
-    padding: 50px 50px;
+    padding: 50px 64px;
     width: 90vw;
     height: 65vh;
+    background-image: linear-gradient(to top, #5d3359, #8a3563, #b6365f, #dd404e, #f75930);
 }
 
 .mat-button{
-    background-color: #f75930;
+    background: none;
     color: #fff;
     border-radius: 1px;
     padding: 15px;
     border: none;
     margin-bottom: 15px;
-    font-weight: 550;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .button-icon{
-    color: #fff;
+    color: #000;
 }
 
 .mat-elevation-z8{
-    background-color: #f75930;
+    background-color: #fff;
     border: none;
+    width: 80vw;
 }
 
 .text{
+    color: #000;
+}
+
+.container-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-paginator{
+    background: none;
+    margin-bottom: 15px;
     color: #fff;
+    font-size: 15px;
 }

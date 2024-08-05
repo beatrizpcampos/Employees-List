@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ElementDialogComponent } from '../../shared/element-dialog/element-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export interface PeriodicElement {
   name: string;
@@ -19,12 +20,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 4, name: 'Camila', occupation: 'Desenvolvedor Pleno', team: 'Sao Paulo' },
   { position: 5, name: 'Jorge', occupation: 'Desenvolvedor Senior', team: 'Fluminense' },
   { position: 6, name: 'Teresa', occupation: 'CEO', team: 'Flamengo' },
+  { position: 7, name: 'Marcelo', occupation: 'Designer', team: 'Botafogo' },
 ];
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -1,8 +1,9 @@
 .container {
     background-color: #5d3359;
-    padding: 20px 50px;
+    padding: 29px 50px;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: center;
+    align-self: flex-end;
 }
 
 .copyright {

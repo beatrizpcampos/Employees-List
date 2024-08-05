@@ -5,10 +5,10 @@
  display: flex;
  flex-direction: column;
  align-items: center;
- background-color: #fff;
  border-radius: 5px;
  border: none;
  margin: 3px;
+ background-color: #1f1f1f;
 }
 
 mat-dialog-content{
@@ -17,12 +17,13 @@ mat-dialog-content{
 }
 
 h1{
-    margin-bottom: 30px;
-    color: #f75930;
+    margin-top: 8px;
+    margin-bottom: 40px;
+    color: #fff;
 }
 
 p{
-    color: #000;
+    color: #fff;
     margin-bottom: 0;
     display: flex;
     justify-content: center;
@@ -30,15 +31,15 @@ p{
 
 input{
     border-radius: 5px;
-    background-color: #d3d3d3;
-    border-color: #f7552d;
+    background-color: #fff;
+    border: none;
     padding: 12px;
     height: 25px;
-    margin-top: -25px;
+    margin-top: -30px;
 }
 
 button{
-    background-color: #5d3359;
+    background-color: #f7552d;
     border-radius: 5px;
     padding: 15px;
     margin-top: -35px;
@@ -47,6 +48,7 @@ button{
     margin-left: 3px;
     width: 80px;
     cursor: pointer;
+    font-size: 15px;
 }
 
 .first-input{

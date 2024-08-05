@@ -6,14 +6,14 @@ import { ElementDialogComponent } from '../../shared/element-dialog/element-dial
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-export interface PeriodicElement {
+export interface ListElement {
   name: string;
   position: number;
   occupation: string;
   team: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: ListElement[] = [
   { position: 1, name: 'Marcos', occupation: 'Rh', team: 'Santos' },
   { position: 2, name: 'Bruna', occupation: 'Gestor', team: 'Corinthians' },
   { position: 3, name: 'Fernando', occupation: 'Desenvolvedor Junior', team: 'Palmeiras' },
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(element: PeriodicElement | null): void {
+  openDialog(element: ListElement | null): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       data: element === null ? {
         position: null,
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  editElement(element: PeriodicElement): void {
+  editElement(element: ListElement): void {
     this.openDialog(element);
   }
 
